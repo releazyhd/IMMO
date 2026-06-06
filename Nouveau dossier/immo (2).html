@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison individuelle — 249 000 €</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f7f5f2;
+    color: #1a1a18;
+  }
+
+  .hero {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    background: linear-gradient(160deg, #2c2c2a 0%, #1a1a18 100%);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('IMG_4548.JPG') center/cover no-repeat;
+    opacity: 0.55;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 4rem;
+    width: 100%;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #d4a857;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-location {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-price {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #d4a857;
+    font-weight: 600;
+  }
+
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    z-index: 10;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-contact {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .nav-contact:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .stats-bar {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 1px solid #e8e4dd;
+  }
+
+  .stat-item {
+    padding: 1.5rem 3rem;
+    text-align: center;
+    border-right: 1px solid #e8e4dd;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a1a18;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #888780;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d4a857;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #1a1a18;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #444441;
+    margin-bottom: 2.5rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 180px;
+    gap: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-item {
+    background: #e0ddd6;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .feature-item {
+    background: #fff;
+    border: 1px solid #e8e4dd;
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+  }
+
+  .feature-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .feature-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a18;
+  }
+
+  .feature-detail {
+    font-size: 12px;
+    color: #888780;
+    margin-top: 2px;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .contact-card {
+    background: #fff;
+    border: 1px solid #e8e4dd;
+    border-radius: 6px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .agent-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e8e4dd;
+  }
+
+  .agent-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #2c2c2a;
+    display: flex;
+    align-items: center;
+    justify-content: font-size;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #d4a857;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .agent-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: #1a1a18;
+  }
+
+  .agent-title {
+    font-size: 12px;
+    color: #888780;
+    margin-top: 2px;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888780;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-input {
+    width: 100%;
+    background: #f7f5f2;
+    border: 1px solid #e8e4dd;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #1a1a18;
+    margin-bottom: 0.75rem;
+    outline: none;
+  }
+
+  .contact-input:focus {
+    border-color: #d4a857;
+  }
+
+  .contact-textarea {
+    width: 100%;
+    background: #f7f5f2;
+    border: 1px solid #e8e4dd;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #1a1a18;
+    margin-bottom: 1rem;
+    outline: none;
+    resize: none;
+    height: 90px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    background: #1a1a18;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: #2c2c2a; }
+
+  .btn-phone {
+    width: 100%;
+    background: transparent;
+    color: #1a1a18;
+    border: 1px solid #2c2c2a;
+    padding: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  .btn-phone:hover {
+    background: #1a1a18;
+    color: #fff;
+  }
+
+  .dpe-card {
+    background: #fff;
+    border: 1px solid #e8e4dd;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+  }
+
+  .dpe-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888780;
+    margin-bottom: 1rem;
+  }
+
+  .dpe-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #444441;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0ece6;
+  }
+
+  .dpe-row:last-child { border-bottom: none; }
+
+  .dpe-val { font-weight: 500; color: #1a1a18; }
+
+  .map-section {
+    grid-column: 1 / -1;
+    background: #e8e4dd;
+    border-radius: 6px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888780;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  footer {
+    background: #1a1a18;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; gap: 2rem; }
+    .nav { padding: 1.5rem 1.5rem; }
+    .hero-content { padding: 2rem 1.5rem; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { padding: 1rem 1.5rem; flex: 1; min-width: 120px; }
+    .sidebar { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <nav class="nav">
+    <div class="nav-logo">Immo Prestige</div>
+    <a href="tel:+33600000000" class="nav-contact">Nous appeler</a>
+  </nav>
+  <div class="hero-content">
+    <span class="badge">Exclusivité</span>
+    <h1>Maison individuelle<br>plain-pied</h1>
+    <div class="hero-location">📍 Clermont-Ferrand, Puy-de-Dôme</div>
+    <div class="hero-price">249 000 €</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-value">95 m²</span>
+    <span class="stat-label">Surface habitable</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">4</span>
+    <span class="stat-label">Pièces</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">800 m²</span>
+    <span class="stat-label">Terrain</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">1</span>
+    <span class="stat-label">Garage</span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="left-col">
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="IMG_4548.JPG" alt="Façade principale">
+      </div>
+      <div class="gallery-item">
+        <img src="IMG_4550.JPG" alt="Terrasse">
+      </div>
+      <div class="gallery-item">
+        <img src="IMG_4542.JPG" alt="Séjour">
+      </div>
+    </div>
+
+    <p class="section-label">Description</p>
+    <h2 class="section-title">Une maison lumineuse avec grand terrain</h2>
+    <p class="description">
+      Belle maison individuelle plain-pied de 95 m² implantée sur un terrain de 800 m², idéale pour une famille. 
+      Le séjour spacieux et lumineux s'ouvre sur la terrasse pavée, parfaite pour les repas en extérieur. 
+      La cuisine indépendante est équipée et fonctionnelle. La maison dispose de 3 chambres, d'une salle de bain 
+      et d'un garage attenant. Le grand jardin clôturé offre un espace de détente avec piscine hors-sol et coin lounge. 
+      Environnement calme, proche des commodités.
+    </p>
+
+    <p class="section-label">Caractéristiques</p>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🏡</div>
+        <div class="feature-name">Plain-pied</div>
+        <div class="feature-detail">Maison de plain-pied</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-name">Grand terrain</div>
+        <div class="feature-detail">800 m² clos et arboré</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏊</div>
+        <div class="feature-name">Piscine</div>
+        <div class="feature-detail">Piscine hors-sol incluse</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🚗</div>
+        <div class="feature-name">Garage</div>
+        <div class="feature-detail">Garage 1 voiture + parking</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">☀️</div>
+        <div class="feature-name">Terrasse</div>
+        <div class="feature-detail">Terrasse pavée côté jardin</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏠</div>
+        <div class="feature-name">Double vitrage</div>
+        <div class="feature-detail">Volets battants blancs</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="contact-card">
+      <div class="agent-row">
+        <div class="agent-avatar">AM</div>
+        <div>
+          <div class="agent-name">Adrien Marty</div>
+          <div class="agent-title">Agent immobilier</div>
+        </div>
+      </div>
+      <div class="contact-label">Prendre contact</div>
+      <input class="contact-input" type="text" placeholder="Votre nom">
+      <input class="contact-input" type="email" placeholder="Votre email">
+      <textarea class="contact-textarea" placeholder="Je souhaite visiter ce bien..."></textarea>
+      <button class="btn-primary" onclick="sendWhatsApp()">Envoyer ma demande via WhatsApp</button>
+      <a href="tel:+33652344929"><button class="btn-phone">📞 06 52 34 49 29</button></a>
+
+<script>
+function sendWhatsApp() {
+  const nom = document.querySelector('input[placeholder="Votre nom"]').value || 'Non renseigné';
+  const email = document.querySelector('input[placeholder="Votre email"]').value || 'Non renseigné';
+  const message = document.querySelector('textarea').value || 'Non renseigné';
+  const text = `Bonjour, je suis intéressé(e) par votre bien à 249 000 €.\n\nNom : ${nom}\nEmail : ${email}\nMessage : ${message}`;
+  window.open(`https://wa.me/33652344929?text=${encodeURIComponent(text)}`, '_blank');
+}
+</script>
+    </div>
+
+    <div class="dpe-card">
+      <div class="dpe-title">Informations complémentaires</div>
+      <div class="dpe-row"><span>Chauffage</span><span class="dpe-val">Électrique</span></div>
+      <div class="dpe-row"><span>Exposition</span><span class="dpe-val">Sud / Ouest</span></div>
+      <div class="dpe-row"><span>Taxe foncière</span><span class="dpe-val">~1 200 €/an</span></div>
+      <div class="dpe-row"><span>Disponibilité</span><span class="dpe-val">Immédiate</span></div>
+      <div class="dpe-row"><span>Honoraires</span><span class="dpe-val">3,5% inclus</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Immo Prestige — Tous droits réservés — Annonce non contractuelle
+</footer>
+
+</body>
+</html>
